@@ -1,0 +1,72 @@
+CMIP3:
+- project
+- institute
+- model
+- experiment
+- time_frequency
+- realm
+- ensemble
+- variable
+CMIP5:
+- institute
+- model
+- experiment
+- time_frequency
+- realm
+- cmor_table
+- ensemble
+- variable
+CMIP6:
+- mip_era
+- activity_drs
+- institution_id
+- source_id
+- experiment_id
+- member_id
+- table_id
+- variable_id
+- grid_label
+- frequency
+- realm
+CMIP6Plus:
+- mip_era
+- activity_drs
+- institution_id
+- source_id
+- experiment_id
+- member_id
+- table_id
+- variable_id
+- grid_label
+- frequency
+- realm
+DRCDP:
+- mip_era
+- activity_id
+- region_id
+- downscaling_source_id
+- institution_id
+- driving_source_id
+- driving_experiment_id
+- driving_variant_label
+- source_id
+- frequency
+- variable_id
+input4MIPs:
+- activity_id
+- mip_era
+- target_mip
+- institution_id
+- source_id
+- realm
+- frequency
+- variable_id
+- grid_label
+obs4MIPs:
+- activity_id
+- institution_id
+- source_id
+- frequency
+- variable_id
+- grid_label
+- realm

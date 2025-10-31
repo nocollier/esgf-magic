@@ -5,6 +5,27 @@ description = "Add your description here"
 readme = "README.md"
 requires-python = ">=3.13"
 dependencies = [
-    "intake-esgf>=2025.7.16",
     "pandas>=2.3.2",
+    "pyyaml>=6.0.3",
+    "requests>=2.32.5",
+    "typer>=0.19.2",
 ]
+
+[build-system]
+build-backend = "setuptools.build_meta"
+requires = ["setuptools>=42", "setuptools-scm>=7"]
+
+[tool.setuptools]
+packages = ["esgf_magic"]
+
+[tool.setuptools_scm]
+version_scheme = "no-guess-dev"
+local_scheme = "node-and-date"
+fallback_version = "0.0.0"
+write_to = "esgf_magic/_version.py"
+
+[tool.setuptools.package-data]
+esgf_magic = ["data/*"]
+
+[project.scripts]
+esm = "esgf_magic.cli:app"
