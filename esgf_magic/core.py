@@ -1,14 +1,27 @@
+import importlib
 import sqlite3
 from pathlib import Path
 from typing import Optional
 
 import pandas as pd
 import requests
+import yaml
 
 
-def query_cv_universe(
-    database_file: Path, terms: list[str], project: Optional[str] = None
-) -> pd.DataFrame:
+def _get_database_file() -> Path:
+    database_file = importlib.resources.files("esgf_magic.data") / "esgf_cv_universe.db"
+    if not database_file.is_file():
+        yaml_file = (
+            importlib.resources.files("esgf_magic.data") / "database_facets.yaml"
+        )
+        with open(yaml_file) as fin:
+            facets_by_project = yaml.safe_load(fin)
+        ingest_by_facet_query(database_file, facets_by_project)
+    return database_file
+
+
+def query_cv_universe(terms: list[str], project: Optional[str] = None) -> pd.DataFrame:
+    database_file = _get_database_file()
     con = sqlite3.connect(str(database_file))
     q = " OR ".join([f"TermName LIKE '{t.replace('*', '%')}'" for t in terms])
     if project is not None:

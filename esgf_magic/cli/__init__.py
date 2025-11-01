@@ -26,14 +26,7 @@ def query(
     database_file = importlib.resources.files("esgf_magic.data") / "esgf_cv_universe.db"
     if regen_database and database_file.is_file():
         database_file.unlink()
-    if not database_file.is_file():
-        yaml_file = (
-            importlib.resources.files("esgf_magic.data") / "database_facets.yaml"
-        )
-        with open(yaml_file) as fin:
-            facets_by_project = yaml.safe_load(fin)
-        esm.ingest_by_facet_query(database_file, facets_by_project)
-    out = esm.query_cv_universe(database_file, terms, project)
+    out = esm.query_cv_universe(terms, project)
     if format == "pandas":
         print(out.to_string())
     else:
