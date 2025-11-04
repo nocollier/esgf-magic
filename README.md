@@ -1,6 +1,8 @@
 
 # esgf-magic
 
+This is a package that queries (and builds) a simple ESGF control vocabulary database to populate search facets. We intend this functionality to be used as a middle layer to be fed into some other discovery tool.
+
 ## Commandline interface `esm`
 
 The package provides a command `esm` which you can use to type control vocabulary (CV) terms and search to what collections/projects they belong. Just call the command and start typing CV terms separated with spaces.
